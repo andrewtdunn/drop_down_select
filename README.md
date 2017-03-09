@@ -2,6 +2,8 @@
 
 ![drop-down select](https://raw.githubusercontent.com/andrewtdunn/drop_down_select/master/dist/assets/dropdownselect.png)
 
+[Live example](http://andrewtdunn.com/_dropdownSelect/)
+
 When user clicks on container, dropdown menu appears as in the image above.
 
 When line item is checked in the dropdown menu, the name is removed from the title field.
