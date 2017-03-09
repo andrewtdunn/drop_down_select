@@ -1,5 +1,5 @@
 import { PropTypes } from 'react'
-import Label from 'react-icons/lib/md/label'
+import { NameLabel } from './NameLabel'
 
 export const ListItem = ({id, hexColor, name, selected, onItemChange}) => {
 
@@ -11,8 +11,8 @@ export const ListItem = ({id, hexColor, name, selected, onItemChange}) => {
 
   <div className="list_item">
     <input type="checkbox" checked={selected} onChange={onChange}/>
-    <span style={{color: hexColor }}><Label/> </span>
-    {name}
+    <NameLabel name={name}
+               hexColor={hexColor}/>
   </div>
   )
 
