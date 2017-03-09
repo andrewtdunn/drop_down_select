@@ -13,7 +13,7 @@ On hover, tooltip appears for items in title field containing the name of each i
 Hidden html field keeps track of the ids of selected items in csv form. ex:
 
 ```html
-<hidden value="1,3"/>
+<input type="hidden" name="selectedItems" value="1,3"/>
 ```
 
 <br>
