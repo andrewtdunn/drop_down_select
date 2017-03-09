@@ -22,6 +22,8 @@
 
 <br>
 
+## to run locally:
+
 - to install all local packages from main directory:
 ```bash
 
