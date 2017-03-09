@@ -63,7 +63,7 @@ export class DropDownSelect extends Component {
   render() {
     return (
       <div className="drop_down_select">
-        <hidden value={this.getCSV()}/>
+        <input type="hidden" name="selectedItems" value={this.getCSV()}/>
         <SelectedContainer
 
             onClick={this.toggleDropdown}

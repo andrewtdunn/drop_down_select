@@ -56,13 +56,13 @@
 
 	__webpack_require__(182);
 
-	var _App = __webpack_require__(184);
+	var _DropDownSelect = __webpack_require__(184);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	window.React = _react2.default;
 
-	(0, _reactDom.render)(_react2.default.createElement(_App.App, null), document.getElementById('react-container'));
+	(0, _reactDom.render)(_react2.default.createElement(_DropDownSelect.DropDownSelect, null), document.getElementById('react-container'));
 
 /***/ },
 /* 1 */
@@ -21533,7 +21533,7 @@
 
 
 	// module
-	exports.push([module.id, "", ""]);
+	exports.push([module.id, ".drop_down_select {\n  width: 400px; }\n  .drop_down_select .selected_container {\n    border: 1px solid black;\n    padding: 5px;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    cursor: pointer;\n    min-height: 1.5em;\n    position: relative; }\n    .drop_down_select .selected_container .up_down_arrows {\n      position: absolute;\n      float: right;\n      right: 0px;\n      top: 10px; }\n    .drop_down_select .selected_container .selected_container_item {\n      position: relative;\n      margin-left: 5px; }\n      .drop_down_select .selected_container .selected_container_item:last-of-type .comma {\n        display: none; }\n      .drop_down_select .selected_container .selected_container_item .tooltip_text {\n        font-size: 0.8em;\n        visibility: hidden;\n        background-color: white;\n        border: 1px solid black;\n        text-align: center;\n        padding: 3px;\n        position: absolute;\n        top: -10px;\n        left: 5px; }\n      .drop_down_select .selected_container .selected_container_item:hover .tooltip_text {\n        visibility: visible; }\n  .drop_down_select .list_container {\n    border-left: 1px solid gray;\n    border-right: 1px solid gray;\n    border-bottom: 1px solid gray; }\n    .drop_down_select .list_container.hidden {\n      display: none; }\n    .drop_down_select .list_container.show {\n      display: block; }\n", ""]);
 
 	// exports
 
@@ -21895,7 +21895,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.App = undefined;
+	exports.DropDownSelect = undefined;
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -21903,51 +21903,102 @@
 
 	var _ListContainer = __webpack_require__(185);
 
+	var _SelectedContainer = __webpack_require__(187);
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var App = exports.App = function (_Component) {
-	  _inherits(App, _Component);
+	var DropDownSelect = exports.DropDownSelect = function (_Component) {
+	  _inherits(DropDownSelect, _Component);
 
-	  function App(props) {
-	    _classCallCheck(this, App);
+	  function DropDownSelect(props) {
+	    _classCallCheck(this, DropDownSelect);
 
-	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (DropDownSelect.__proto__ || Object.getPrototypeOf(DropDownSelect)).call(this, props));
 
 	    _this.state = {
 	      items: [{
 	        id: 1,
 	        hexColor: "#c488f3",
-	        name: "2 Day Shipping"
+	        name: "2 Day Shipping",
+	        selected: true
 	      }, {
 	        id: 2,
 	        hexColor: "#25a696",
-	        name: "3-5 Day Shipping"
+	        name: "3-5 Day Shipping",
+	        selected: false
 	      }, {
 	        id: 3,
 	        hexColor: "#da3b11",
-	        name: "Address Check"
-	      }]
+	        name: "Address Check",
+	        selected: false
+	      }],
+	      showDropdown: true
 	    };
+	    _this.toggleDropdown = _this.toggleDropdown.bind(_this);
+	    _this.onItemChange = _this.onItemChange.bind(_this);
+	    _this.getCSV = _this.getCSV.bind(_this);
 	    return _this;
 	  }
 
-	  _createClass(App, [{
+	  _createClass(DropDownSelect, [{
+	    key: 'toggleDropdown',
+	    value: function toggleDropdown() {
+	      this.setState({
+	        showDropdown: !this.state.showDropdown
+	      });
+	    }
+	  }, {
+	    key: 'findByID',
+	    value: function findByID(id) {
+	      console.log(id);
+	    }
+	  }, {
+	    key: 'onItemChange',
+	    value: function onItemChange(id, checked) {
+	      var items = this.state.items;
+	      var itemIndex = items.findIndex(function (item) {
+	        return item.id == id;
+	      });
+	      items[itemIndex].selected = checked;
+	      this.setState({
+	        items: items
+	      });
+	    }
+	  }, {
+	    key: 'getCSV',
+	    value: function getCSV() {
+	      var currItems = this.state.items.filter(function (item) {
+	        return item.selected == true;
+	      });
+	      var csv = currItems.map(function (item) {
+	        return item.id;
+	      });
+	      return csv.toString();
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return React.createElement(
 	        'div',
-	        { className: 'app' },
-	        'App Here',
-	        React.createElement(_ListContainer.ListContainer, { items: this.state.items })
+	        { className: 'drop_down_select' },
+	        React.createElement('hidden', { value: this.getCSV() }),
+	        React.createElement(_SelectedContainer.SelectedContainer, {
+
+	          onClick: this.toggleDropdown,
+	          items: this.state.items
+	        }),
+	        React.createElement(_ListContainer.ListContainer, { items: this.state.items,
+	          showDropdown: this.state.showDropdown,
+	          onItemChange: this.onItemChange })
 	      );
 	    }
 	  }]);
 
-	  return App;
+	  return DropDownSelect;
 	}(_react.Component);
 
 /***/ },
@@ -21968,15 +22019,18 @@
 	var _react = __webpack_require__(1);
 
 	var ListContainer = exports.ListContainer = function ListContainer(_ref) {
-	  var items = _ref.items;
+	  var items = _ref.items,
+	      showDropdown = _ref.showDropdown,
+	      onItemChange = _ref.onItemChange;
 
 
 	  return React.createElement(
 	    'div',
-	    { className: 'list_container' },
+	    { className: "list_container " + (showDropdown ? 'show' : 'hidden') },
 	    items.map(function (item, i) {
 	      return React.createElement(_ListItem.ListItem, _extends({ key: i
-	      }, item));
+	      }, item, {
+	        onItemChange: onItemChange }));
 	    })
 	  );
 	};
@@ -21997,13 +22051,198 @@
 	var ListItem = exports.ListItem = function ListItem(_ref) {
 	  var id = _ref.id,
 	      hexColor = _ref.hexColor,
-	      name = _ref.name;
+	      name = _ref.name,
+	      selected = _ref.selected,
+	      onItemChange = _ref.onItemChange;
 
 
-	  React.createElement(
+	  var onChange = function onChange(e) {
+	    var checked = e.target.checked;
+	    onItemChange(id, checked);
+	  };
+	  return React.createElement(
 	    "div",
 	    { className: "list_item" },
-	    "ok"
+	    React.createElement("input", { type: "checkbox", checked: selected, onChange: onChange }),
+	    React.createElement(
+	      "span",
+	      { style: { color: hexColor } },
+	      "\u25AE"
+	    ),
+	    name
+	  );
+	};
+
+/***/ },
+/* 187 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.SelectedContainer = undefined;
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _arrowUnsorted = __webpack_require__(188);
+
+	var _arrowUnsorted2 = _interopRequireDefault(_arrowUnsorted);
+
+	var _SelectedContainerItem = __webpack_require__(190);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var SelectedContainer = exports.SelectedContainer = function SelectedContainer(_ref) {
+	  var items = _ref.items,
+	      onClick = _ref.onClick;
+
+
+	  var currentItems = items.filter(function (item) {
+	    return item.selected == true;
+	  });
+
+	  return React.createElement(
+	    'div',
+	    { onClick: onClick, className: 'selected_container' },
+	    currentItems.map(function (item, i) {
+	      return React.createElement(_SelectedContainerItem.SelectedContainerItem, _extends({}, item, { key: i }));
+	    }),
+	    React.createElement(_arrowUnsorted2.default, { className: 'up_down_arrows' })
+	  );
+	};
+
+/***/ },
+/* 188 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactIconBase = __webpack_require__(189);
+
+	var _reactIconBase2 = _interopRequireDefault(_reactIconBase);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var TiArrowUnsorted = function TiArrowUnsorted(props) {
+	    return _react2.default.createElement(
+	        _reactIconBase2.default,
+	        _extends({ viewBox: '0 0 40 40' }, props),
+	        _react2.default.createElement(
+	            'g',
+	            null,
+	            _react2.default.createElement('path', { d: 'm30.3 15.5l-10.3-10.5-10.3 10.5c-0.4 0.3-0.5 0.7-0.5 1.2s0.1 0.8 0.5 1.1c0.3 0.4 0.6 0.5 1.1 0.5h18.4c0.5 0 0.8-0.1 1.1-0.5 0.4-0.3 0.5-0.8 0.5-1.1s-0.1-0.9-0.5-1.2z m-20.6 9l10.3 10.5 10.3-10.5c0.4-0.3 0.5-0.8 0.5-1.2s-0.1-0.8-0.5-1.1c-0.3-0.4-0.6-0.5-1.1-0.5h-18.4c-0.5 0-0.8 0.1-1.1 0.5-0.4 0.3-0.5 0.8-0.5 1.1s0.1 0.9 0.5 1.2z' })
+	        )
+	    );
+	};
+
+	exports.default = TiArrowUnsorted;
+	module.exports = exports['default'];
+
+/***/ },
+/* 189 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+	var IconBase = function IconBase(_ref, _ref2) {
+	  var children = _ref.children;
+	  var color = _ref.color;
+	  var size = _ref.size;
+	  var style = _ref.style;
+
+	  var props = _objectWithoutProperties(_ref, ['children', 'color', 'size', 'style']);
+
+	  var _ref2$reactIconBase = _ref2.reactIconBase;
+	  var reactIconBase = _ref2$reactIconBase === undefined ? {} : _ref2$reactIconBase;
+
+	  var computedSize = size || reactIconBase.size || '1em';
+	  return _react2.default.createElement('svg', _extends({
+	    children: children,
+	    fill: 'currentColor',
+	    preserveAspectRatio: 'xMidYMid meet',
+	    height: computedSize,
+	    width: computedSize
+	  }, reactIconBase, props, {
+	    style: _extends({
+	      verticalAlign: 'middle',
+	      color: color || reactIconBase.color
+	    }, reactIconBase.style || {}, style)
+	  }));
+	};
+
+	IconBase.propTypes = {
+	  color: _react.PropTypes.string,
+	  size: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.number]),
+	  style: _react.PropTypes.object
+	};
+
+	IconBase.contextTypes = {
+	  reactIconBase: _react.PropTypes.shape(IconBase.propTypes)
+	};
+
+	exports.default = IconBase;
+	module.exports = exports['default'];
+
+/***/ },
+/* 190 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var SelectedContainerItem = exports.SelectedContainerItem = function SelectedContainerItem(_ref) {
+	  var id = _ref.id,
+	      name = _ref.name,
+	      hexColor = _ref.hexColor;
+
+
+	  return React.createElement(
+	    "span",
+	    { className: "selected_container_item" },
+	    React.createElement(
+	      "span",
+	      { style: { color: hexColor } },
+	      "\u25AE"
+	    ),
+	    name,
+	    React.createElement(
+	      "span",
+	      { className: "tooltip_text" },
+	      name
+	    ),
+	    React.createElement(
+	      "span",
+	      { className: "comma" },
+	      ","
+	    )
 	  );
 	};
 
