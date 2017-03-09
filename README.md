@@ -2,7 +2,7 @@
 
 ![drop-down select](https://raw.githubusercontent.com/andrewtdunn/drop_down_select/master/dist/assets/dropdownselect.png)
 
-[Live example](http://andrewtdunn.com/_dropdownSelectbox/)
+[Live example](http://andrewtdunn.com/_dropdownselectbox/)
 
 When user clicks on container, dropdown menu appears as in the image above.
 
