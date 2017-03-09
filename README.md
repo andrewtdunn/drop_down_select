@@ -1,8 +1,8 @@
-# Dropdown Select React Component
+# Dropdown Select Box React Component
 
 ![drop-down select](https://raw.githubusercontent.com/andrewtdunn/drop_down_select/master/dist/assets/dropdownselect.png)
 
-[Live example](http://andrewtdunn.com/_dropdownSelect/)
+[Live example](http://andrewtdunn.com/_dropdownSelectbox/)
 
 When user clicks on container, dropdown menu appears as in the image above.
 
