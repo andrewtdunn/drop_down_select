@@ -1,19 +1,19 @@
 .drop_down_select {
-  width: 400px;
+  width: 425px;
 
   .selected_container {
     border: 1px solid black;
     padding: 5px;
     user-select: none;
     cursor: pointer;
-    min-height: 1.5em;
+    min-height: 1.25em;
     position: relative;;
 
     .up_down_arrows{
       position: absolute;;
       float: right;
       right: 0px;
-      top: 10px;
+      top: 8px;
     }
 
     .selected_container_item{
@@ -29,7 +29,7 @@
       .tooltip_text {
         font-size: 0.8em;
         visibility: hidden;
-        background-color: white;
+        background-color: yellow;
         border: 1px solid black;
         text-align: center;
         padding: 3px;
@@ -61,5 +61,14 @@
     &.show {
       display: block;
     }
+
+    .list_item{
+      padding-top: 5px;
+      padding-bottom: 3px;
+      &:nth-of-type(odd){
+        background-color: #eee;
+      }
+    }
+
   }
 }

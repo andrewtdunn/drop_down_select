@@ -1,4 +1,5 @@
 import { PropTypes } from 'react'
+import Label from 'react-icons/lib/md/label'
 
 export const ListItem = ({id, hexColor, name, selected, onItemChange}) => {
 
@@ -10,7 +11,7 @@ export const ListItem = ({id, hexColor, name, selected, onItemChange}) => {
 
   <div className="list_item">
     <input type="checkbox" checked={selected} onChange={onChange}/>
-    <span style={{color: hexColor }}>&#9646;</span>
+    <span style={{color: hexColor }}><Label/> </span>
     {name}
   </div>
   )
