@@ -8,9 +8,9 @@ When line item is checked in the dropdown menu, the name is removed from the tit
 
 On hover, tooltip appears for items in title field containing the name of each item.
 
-Hidden html field keeps track of the ids of selected items in csv form.
+Hidden html field keeps track of the ids of selected items in csv form. ex. <hidden value="1,3"/>
 
-
+<br>
 
 - to install all local packages from main directory:
 ```bash
