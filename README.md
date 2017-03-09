@@ -1,6 +1,6 @@
 # Dropdown Select
 
-![drop-down select](https://github.com/andrewtdunn/drop_down_select/dist/assets/dropdownselect.png)
+![drop-down select](http://github.com/andrewtdunn/drop_down_select/dist/assets/dropdownselect.png)
 
 When user clicks on container, dropdown menu appears as in the image above.
 
