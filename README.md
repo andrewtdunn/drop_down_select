@@ -4,15 +4,17 @@
 
 [Live example](http://andrewtdunn.com/_dropdownselectbox/)
 
-When user clicks on container, dropdown menu appears as in the image above.
+##specifications:
 
-When line item is checked in the dropdown menu, the name is added to the title field.
+1. When user clicks on container, dropdown menu appears as in the image above.
 
-When line item is unchecked in the dropdown menu, the name is removed from the title field.
+1. When line item is checked in the dropdown menu, the name is added to the title field.
 
-On hover, tooltip appears for items in title field containing the name of each item.
+1. When line item is unchecked in the dropdown menu, the name is removed from the title field.
 
-Hidden html field keeps track of the ids of selected items in csv form. ex:
+1. On hover, tooltip appears for items in title field containing the name of each item.
+
+1. Hidden html field keeps track of the ids of selected items in csv form. ex:
 
 ```html
 <input type="hidden" name="selectedItems" value="1,3"/>
