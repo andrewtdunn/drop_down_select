@@ -4,7 +4,7 @@
 
 [Live example](http://andrewtdunn.com/_dropdownselectbox/)
 
-##specifications:
+## specifications:
 
 1. When user clicks on container, dropdown menu appears as in the image above.
 
